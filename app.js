@@ -18,7 +18,6 @@ app.get('/count.mjpeg', function(request, res) {
   var i = 0;
   var send_next = function() {
     i = (i+1) % 100;
-    console.log("send ", i);
     var filename = i + ".jpg";
     fs.readFile(__dirname + '/resources/' + filename, function (err, content) {
       res.write("--myboundary\r\n");
