@@ -16,7 +16,13 @@ app.get('/count.mjpeg', function(request, res) {
   });
 
   var i = 0;
+  var stop = false;
+
+  res.connection.on('close', function() { stop = true; });
+
   var send_next = function() {
+    if (stop)
+      return;
     i = (i+1) % 100;
     var filename = i + ".jpg";
     fs.readFile(__dirname + '/resources/' + filename, function (err, content) {
