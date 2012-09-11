@@ -4,7 +4,7 @@ var fs = require('fs');
 var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-  response.send('This page has an mjpeg embedded in it:<br/><img src=count.mjpeg><br/>But if you open the <a href=count.mjpeg>image directly it does not animate</a> (in Chrome 20).');
+  response.send('This page has an mjpeg embedded in it:<br/><img src=count.mjpeg><br/> Click here to <a href=count.mjpeg>view the image by itself</a>. <p><b>Update:</b> This page was created to demo a bug in Chrome 20/21 where an mpjeg stream viewed directly did not animate (<a href=http://crbug.com/135337>chrome bug 135337</a>). The issue has been fixed in versions >= 22. I\'ll leave this page up for anyone else trying to test mjpeg functionality.</p>');
 });
 
 app.get('/count.mjpeg', function(request, res) {
